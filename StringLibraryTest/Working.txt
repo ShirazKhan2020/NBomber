@@ -1,0 +1,61 @@
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Reflection;
+using System.Threading.Tasks;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NBomber.Contracts;
+using NBomber.CSharp;
+
+namespace StringLibraryTest
+{
+    [TestClass]
+    public partial class NBomber
+    {
+
+        private string uri = "https://kwshiraz-eval-test.apigee.net/spikearresttest1036pm";
+        public void LoadRequest()
+        {
+            string methodName = MethodBase.GetCurrentMethod().Name;
+            var scenario = BuildScenarioMultiRequest(methodName)
+            .WithoutWarmUp()
+
+            .WithLoadSimulations(new[]
+            {
+                        Simulation.InjectPerSec(rate:100,during: TimeSpan.FromSeconds(10))
+            }
+            );
+
+            NBomberRunner
+                .RegisterScenarios(scenario)
+                .Run();
+        }
+
+        public async Task SingleTestRequest()
+        {
+            var client = new HttpClient();
+            var response = await client.GetAsync(uri);
+        }
+        [TestMethod]
+        public void Z_VerifySpikeArrestPolicyInvoked()
+        {
+            LoadRequest();
+            var client = new HttpClient();
+            HttpRequestMessage msg = new HttpRequestMessage(HttpMethod.Get, uri);
+            var response = client.Send(msg);
+            response.StatusCode.Should().Be(HttpStatusCode.TooManyRequests);
+        }
+
+        Scenario BuildScenarioMultiRequest(string scenarioName)
+        {
+
+            var step = Step.Create(scenarioName, async context =>
+            {
+                await SingleTestRequest();
+                return Response.Ok();
+            });
+            return ScenarioBuilder.CreateScenario(scenarioName, step);
+        }
+    }
+}

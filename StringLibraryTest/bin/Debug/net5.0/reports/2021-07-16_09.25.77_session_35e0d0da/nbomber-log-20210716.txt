@@ -1,0 +1,17 @@
+2021-07-16 19:25:10.847 +10:00 [INF] [ThreadId:4] NBomber '2.0.4' Started a new session: '2021-07-16_09.25.77_session_35e0d0da'.
+2021-07-16 19:25:10.938 +10:00 [INF] [ThreadId:4] NBomber started as single node.
+2021-07-16 19:25:11.009 +10:00 [INF] [ThreadId:10] Plugins: no plugins were loaded.
+2021-07-16 19:25:11.009 +10:00 [INF] [ThreadId:10] Reporting sinks: no reporting sinks were loaded.
+2021-07-16 19:25:11.009 +10:00 [INF] [ThreadId:10] Starting init...
+2021-07-16 19:25:11.020 +10:00 [INF] [ThreadId:10] Target scenarios: 'LoadRequest'.
+2021-07-16 19:25:11.032 +10:00 [INF] [ThreadId:10] Init finished.
+2021-07-16 19:25:11.048 +10:00 [INF] [ThreadId:6] Starting warm up...
+2021-07-16 19:25:12.066 +10:00 [INF] [ThreadId:12] Starting bombing...
+2021-07-16 19:25:15.006 +10:00 [ERR] [ThreadId:11] Step 'LoadRequest' from scenario 'LoadRequest' has failed. Error: step timeout
+2021-07-16 19:25:17.607 +10:00 [ERR] [ThreadId:12] Step 'LoadRequest' from scenario 'LoadRequest' has failed. Error: step timeout
+2021-07-16 19:25:18.609 +10:00 [ERR] [ThreadId:10] Step 'LoadRequest' from scenario 'LoadRequest' has failed. Error: step timeout
+2021-07-16 19:25:19.612 +10:00 [ERR] [ThreadId:6] Step 'LoadRequest' from scenario 'LoadRequest' has failed. Error: step timeout
+2021-07-16 19:25:24.079 +10:00 [INF] [ThreadId:13] Stopping scenarios...
+2021-07-16 19:25:24.084 +10:00 [INF] [ThreadId:13] Calculating final statistics...
+2021-07-16 19:25:24.227 +10:00 [WRN] [ThreadId:13] Test finished with errors, please check the log file.
+2021-07-16 19:25:24.227 +10:00 [INF] [ThreadId:13] Reports saved in folder: '/Users/zohazari/NBomber/StringLibraryTest/bin/Debug/net5.0/reports/2021-07-16_09.25.77_session_35e0d0da'
